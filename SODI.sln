@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SODI.Console", "SODI.Console\SODI.Console.csproj", "{85B17141-3F96-47EE-A706-507B5FFEB7B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SODI.Services", "SODI.Services\SODI.Services.csproj", "{C1C955E7-2E4F-47B5-97E3-A6D088C0FAA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SODI.Repositories", "SODI.Repositories\SODI.Repositories.csproj", "{7989C9C6-807A-46AF-88AF-9FA4E595DDA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SODI.Tests.UnitTests", "SODI.Tests.UnitTests\SODI.Tests.UnitTests.csproj", "{33197319-D856-445C-B50D-FEB7375B2D8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SODI.Models", "SODI.Models\SODI.Models.csproj", "{41B036FA-6BF0-4896-A638-B3AFB9754315}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SODI.Contracts", "SODI.Contracts\SODI.Contracts.csproj", "{11DAC731-9610-4A7F-BC90-C54B7F7C1761}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85B17141-3F96-47EE-A706-507B5FFEB7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85B17141-3F96-47EE-A706-507B5FFEB7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85B17141-3F96-47EE-A706-507B5FFEB7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85B17141-3F96-47EE-A706-507B5FFEB7B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1C955E7-2E4F-47B5-97E3-A6D088C0FAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1C955E7-2E4F-47B5-97E3-A6D088C0FAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1C955E7-2E4F-47B5-97E3-A6D088C0FAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1C955E7-2E4F-47B5-97E3-A6D088C0FAA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7989C9C6-807A-46AF-88AF-9FA4E595DDA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7989C9C6-807A-46AF-88AF-9FA4E595DDA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7989C9C6-807A-46AF-88AF-9FA4E595DDA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7989C9C6-807A-46AF-88AF-9FA4E595DDA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33197319-D856-445C-B50D-FEB7375B2D8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33197319-D856-445C-B50D-FEB7375B2D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33197319-D856-445C-B50D-FEB7375B2D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33197319-D856-445C-B50D-FEB7375B2D8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41B036FA-6BF0-4896-A638-B3AFB9754315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B036FA-6BF0-4896-A638-B3AFB9754315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B036FA-6BF0-4896-A638-B3AFB9754315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B036FA-6BF0-4896-A638-B3AFB9754315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11DAC731-9610-4A7F-BC90-C54B7F7C1761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11DAC731-9610-4A7F-BC90-C54B7F7C1761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11DAC731-9610-4A7F-BC90-C54B7F7C1761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11DAC731-9610-4A7F-BC90-C54B7F7C1761}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
