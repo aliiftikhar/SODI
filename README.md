@@ -1,0 +1,2 @@
+# SODI
+SODI (StackOverflowDataImport) is a simple Windows Executable program (.NET Console .exe) that imports StackOverflow data dump (.xml) into your choice of Database. At the moment it supports MS SQL Server, but it is designed for extension. Please feel free to add more Database support (e.g. MySql, Redis etc) all you will need to do is to implement IDatabaseRepository and configure DatabaseRepositoryStrategy to return your newly added Repository when requested.
