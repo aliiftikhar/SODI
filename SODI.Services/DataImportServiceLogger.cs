@@ -25,7 +25,6 @@ namespace SODI.Services {
          string stackOverflowEntityTypeName = typeof(T).Name;
          this.logger.Log(String.Format("Import started for: {0}", stackOverflowEntityTypeName));
          
-         //Thread.Sleep(5000);
          this.dataImportService.ImportData();
 
          this.logger.Log(String.Format("Import completed for: {0}", stackOverflowEntityTypeName));
