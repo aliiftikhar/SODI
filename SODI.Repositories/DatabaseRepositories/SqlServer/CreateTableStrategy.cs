@@ -26,7 +26,7 @@ namespace SODI.Repositories.DatabaseRepositories.SqlServer {
 
       private string CreateTagsTableSql() {
          return @"CREATE TABLE [dbo].[Tags](
-	                  [Id] [int] NULL,
+	                  [Id] [int] IDENTITY(1,1) PRIMARY KEY,
 	                  [TagName] [nvarchar](max) NULL,
 	                  [Count] [int] NULL,
 	                  [ExcerptPostId] [int] NULL,
@@ -35,7 +35,7 @@ namespace SODI.Repositories.DatabaseRepositories.SqlServer {
 
       private string CreateUsersTableSql() {
          return @"CREATE TABLE [dbo].[Users](
-	                  [Id] [int] NULL,
+	                  [Id] [int] IDENTITY(1,1) PRIMARY KEY,
 	                  [Reputation] [nvarchar](max) NULL,
 	                  [CreationDate] [datetime] NULL,
 	                  [DisplayName] [nvarchar](max) NULL,
@@ -53,7 +53,7 @@ namespace SODI.Repositories.DatabaseRepositories.SqlServer {
 
       private string CreateBadgesTableSql() {
          return @"CREATE TABLE [dbo].[Badges](
-	                  [Id] [int] NULL,
+	                  [Id] [int] IDENTITY(1,1) PRIMARY KEY,
 	                  [UserId] [int] NULL,
 	                  [Name] [nvarchar](max) NULL,
 	                  [Date] [datetime] NULL)";
@@ -61,7 +61,7 @@ namespace SODI.Repositories.DatabaseRepositories.SqlServer {
 
       private string CreateVotesTableSql() {
          return @"CREATE TABLE [dbo].[Votes](
-	                  [Id] [int] NULL,
+	                  [Id] [int] IDENTITY(1,1) PRIMARY KEY,
 	                  [PostId] [int] NULL,
 	                  [VoteTypeId] [int] NULL,
 	                  [UserId] [int] NULL,
@@ -71,7 +71,7 @@ namespace SODI.Repositories.DatabaseRepositories.SqlServer {
 
       private string CreateCommentsTableSql() {
          return @"CREATE TABLE [dbo].[Comments](
-	                  [Id] [int] NULL,
+	                  [Id] [int] IDENTITY(1,1) PRIMARY KEY,
 	                  [PostId] [int] NULL,
 	                  [Score] [int] NULL,
 	                  [Text] [nvarchar](max) NULL,
@@ -82,7 +82,7 @@ namespace SODI.Repositories.DatabaseRepositories.SqlServer {
 
       private string CreatePostsTableSql() {
          return @"CREATE TABLE [dbo].[Posts](
-	                  [Id] [int] NULL,
+	                  [Id] [int] IDENTITY(1,1) PRIMARY KEY,
 	                  [PostTypeId] [int] NULL,
 	                  [AcceptedAnswerId] [int] NULL,
 	                  [CreationDate] [datetime] NULL,

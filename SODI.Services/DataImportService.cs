@@ -33,6 +33,8 @@ namespace SODI.Services {
 
          ValidateFilePath();
 
+         this.entityRepository.CreateDatabaseIfAlreadyNotCreated();
+
          TestDatabseConnection();
 
          this.entityRepository.CreateTable();

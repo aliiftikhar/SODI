@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace SODI.Contracts.Repositories {
    public interface IDatabaseRepository<T> {
+      void CreateDatabaseIfAlreadyNotCreated();
       bool TestConnection();
       void CreateTable();
-      void BulkInsert(DataTable dt);
+      void BulkInsert(DataTable dt);      
    }
 }

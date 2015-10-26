@@ -14,14 +14,27 @@ namespace SODI.Repositories.DatabaseRepositories.SqlServer {
    where T : IStackOverflowEntity {
 
       private readonly string connectionString;
+      private readonly string masterConnectionString;
+
+      private DatabaseDetails dbConnectionDetails;
+
       public SqlServerRepository(DatabaseDetails dbConnectionDetails) {
+
+         this.dbConnectionDetails = dbConnectionDetails;
 
          this.connectionString =
                String.Format("Server={0};Database={1};User Id={2};Password={3};",
                   dbConnectionDetails.Server,
-                  dbConnectionDetails.Name,
+                  dbConnectionDetails.DatabaseName,
                   dbConnectionDetails.Username,
                   dbConnectionDetails.Password);
+
+         this.masterConnectionString =
+               String.Format("Server={0};Database={1};User Id={2};Password={3};",
+               dbConnectionDetails.Server,
+               "master",
+               dbConnectionDetails.Username,
+               dbConnectionDetails.Password);
       }
 
       public bool TestConnection() {
@@ -50,6 +63,10 @@ namespace SODI.Repositories.DatabaseRepositories.SqlServer {
 
       #region PRIVATE METHODS
       private void ExecuteNonQuerySql(String sql) {
+         ExecuteNonQuerySql(sql, connectionString);
+      }
+
+      private void ExecuteNonQuerySql(String sql, string connectionString) {
          using (SqlConnection connection = new SqlConnection(connectionString)) {
             connection.Open();
 
@@ -79,5 +96,16 @@ namespace SODI.Repositories.DatabaseRepositories.SqlServer {
       }
 
       #endregion
+
+      public void CreateDatabaseIfAlreadyNotCreated() {
+         
+         string sql = String.Format(@"IF (Not EXISTS (SELECT name 
+                                    FROM master.dbo.sysdatabases 
+                                    WHERE ('[' + name + ']' = '[{0}]'
+                                    OR name = '[{0}]')))
+                                    CREATE DATABASE [{0}]", this.dbConnectionDetails.DatabaseName);
+
+         ExecuteNonQuerySql(sql, this.masterConnectionString);
+      }
    }
 }

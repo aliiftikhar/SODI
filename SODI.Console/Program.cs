@@ -27,81 +27,62 @@ namespace SODI.Console {
          DatabaseDetails databaseDetails =
             GetDatabaseDetailsFromAppConfig();
 
-         Logger logger = 
+         Logger logger =
             new Logger();
 
-         AsyncImportStackOverflowEntities(xmlRepository, databaseDetails, logger);
+         ImportStackOverflowEntities(xmlRepository, databaseDetails, logger);
 
          logger.Log("All Done");
       }
       private static DatabaseDetails GetDatabaseDetailsFromAppConfig() {
 
-         DatabaseDetails databaseConnectionDetails = 
+         DatabaseDetails databaseConnectionDetails =
             new DatabaseDetails();
 
-         databaseConnectionDetails.Type = 
+         databaseConnectionDetails.Type =
             (DatabaseType)Enum.Parse(typeof(DatabaseType), ConfigurationManager.AppSettings["DatabaseType"]);
 
-         databaseConnectionDetails.Server = 
+         databaseConnectionDetails.Server =
             ConfigurationManager.AppSettings["DatabaseServerName"];
 
-         databaseConnectionDetails.Name = 
+         databaseConnectionDetails.DatabaseName =
             ConfigurationManager.AppSettings["DatabaseName"];
 
-         databaseConnectionDetails.Username = 
+         databaseConnectionDetails.Username =
             ConfigurationManager.AppSettings["DatabaseUsername"];
 
-         databaseConnectionDetails.Password = 
+         databaseConnectionDetails.Password =
             ConfigurationManager.AppSettings["DatabasePassword"];
 
          return databaseConnectionDetails;
       }
-      private static void AsyncImportStackOverflowEntities(IXmlRepository xmlRepository, DatabaseDetails databaseDetails, Logger logger) {
-         
-         List<Task> TaskList = 
-            new List<Task>();
 
-         TaskList.Add(
-            new Task(() => 
-               Import<TagEntity>(xmlRepository, databaseDetails, logger)));
-         
-         TaskList.Add(
-            new Task(() => 
-               Import<UserEntity>(xmlRepository, databaseDetails, logger)));
+      private static void ImportStackOverflowEntities(IXmlRepository xmlRepository, DatabaseDetails databaseDetails, Logger logger) {
 
-         TaskList.Add(
-            new Task(() => 
-               Import<BadgeEntity>(xmlRepository, databaseDetails, logger)));
+         Import<TagEntity>(xmlRepository, databaseDetails, logger);
 
-         TaskList.Add(
-            new Task(() => 
-               Import<VoteEntity>(xmlRepository, databaseDetails, logger)));
+         Import<UserEntity>(xmlRepository, databaseDetails, logger);
 
-         TaskList.Add(
-            new Task(() => 
-               Import<CommentEntity>(xmlRepository, databaseDetails, logger)));
+         Import<BadgeEntity>(xmlRepository, databaseDetails, logger);
 
-         TaskList.Add(
-            new Task(() => 
-               Import<PostEntity>(xmlRepository, databaseDetails, logger)));
+         Import<VoteEntity>(xmlRepository, databaseDetails, logger);
 
-         foreach (Task task in TaskList)
-            task.Start();
+         Import<CommentEntity>(xmlRepository, databaseDetails, logger);
 
-         Task.WaitAll(
-            TaskList.ToArray());
-      }     
-      private static void Import<T>(IXmlRepository xmlRepository, DatabaseDetails databaseConnectionDetails, Logger logger) 
+         Import<PostEntity>(xmlRepository, databaseDetails, logger);
+      }
+
+      private static void Import<T>(IXmlRepository xmlRepository, DatabaseDetails databaseConnectionDetails, Logger logger)
          where T : IStackOverflowEntity, new() {
-         
+
          IDatabaseRepository<T> repository =
                new DatabaseRepositoryStrategy<T>(databaseConnectionDetails).GetDatabaseRepository();
 
-         T entity = 
+         T entity =
             new T();
 
          IDataImportService<T> dataImportService =
-               new DataImportServiceLogger<T>(logger, 
+               new DataImportServiceLogger<T>(logger,
                   new DataImportService<T>(repository, xmlRepository, entity));
 
          dataImportService.ImportData();
