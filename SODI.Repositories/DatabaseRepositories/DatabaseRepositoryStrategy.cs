@@ -18,6 +18,10 @@ namespace SODI.Repositories.DatabaseRepositories {
 
          this.databaseDetails = databaseDetails;
 
+         GetSupportedDatabaseTypeRepositories();
+      }
+
+      private void GetSupportedDatabaseTypeRepositories() {
          databaseTypeRepositories = new Dictionary<DatabaseType, IDatabaseRepository<T>>();
 
          databaseTypeRepositories.Add(DatabaseType.SqlServer, new SqlServerRepository<T>(this.databaseDetails));
